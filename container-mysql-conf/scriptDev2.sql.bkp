@@ -1,0 +1,33 @@
+/*
+CRIAR NOVO CONTAINER DO MYSQL
+docker run --name mercator-dev2 -v /home/moacir/workspace/mercator/mercator-api/banco:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
+
+EXECUTAR COMANDO DENTRO DO CONTAINER
+docker exec -it mercator-dev2 bash
+mysql -uroot -p
+*/
+
+CREATE USER 'mjr'@'%' IDENTIFIED BY 'compactor07';
+GRANT ALL PRIVILEGES ON mercator__flyway.* TO 'mjr'@'%';
+GRANT ALL PRIVILEGES ON mercator_autenticacao.* TO 'mjr'@'%';
+GRANT ALL PRIVILEGES ON mercator_representacao.* TO 'mjr'@'%';
+GRANT ALL PRIVILEGES ON mercator_financeiro.* TO 'mjr'@'%';
+FLUSH PRIVILEGES ;
+ALTER USER 'mjr'@'localhost' IDENTIFIED BY 'compactor07' ;
+CREATE DATABASE IF NOT EXISTS mercator__flyway;
+CREATE DATABASE IF NOT EXISTS mercator_autenticacao;
+CREATE DATABASE IF NOT EXISTS mercator_representacao;
+CREATE DATABASE IF NOT EXISTS mercator_financeiro;
+
+
+CREATE USER 'mjr'@'172.17.0.2' IDENTIFIED BY 'compactor07';
+GRANT ALL PRIVILEGES ON mercator__flyway.* TO 'mjr'@'172.17.0.2';
+GRANT ALL PRIVILEGES ON mercator_autenticacao.* TO 'mjr'@'172.17.0.2';
+GRANT ALL PRIVILEGES ON mercator_representacao.* TO 'mjr'@'172.17.0.2';
+GRANT ALL PRIVILEGES ON mercator_financeiro.* TO 'mjr'@'172.17.0.2';
+FLUSH PRIVILEGES ;
+ALTER USER 'mjr'@'172.17.0.2' IDENTIFIED BY 'compactor07' ;
+CREATE DATABASE IF NOT EXISTS mercator__flyway;
+CREATE DATABASE IF NOT EXISTS mercator_autenticacao;
+CREATE DATABASE IF NOT EXISTS mercator_representacao;
+CREATE DATABASE IF NOT EXISTS mercator_financeiro;

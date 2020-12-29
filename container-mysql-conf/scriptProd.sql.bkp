@@ -1,0 +1,22 @@
+/*
+docker pull mysql
+docker run --name mercator-prod -v /home/admin/api/mercator/banco:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=viLVC0if1g -h 172.17.0.2 -d mysql:latest
+
+EXECUTAR COMANDO DENTRO DO CONTAINER
+
+docker exec -it mercator-prod bash
+mysql -uroot -p
+
+*/
+
+CREATE USER 'mercator'@'localhost' IDENTIFIED BY 'zoHPsketXi#003255';
+GRANT ALL PRIVILEGES ON mercator__flyway.* TO 'mercator'@'localhost';
+GRANT ALL PRIVILEGES ON mercator_autenticacao.* TO 'mercator'@'localhost';
+GRANT ALL PRIVILEGES ON mercator_representacao.* TO 'mercator'@'localhost';
+GRANT ALL PRIVILEGES ON mercator_financeiro.* TO 'mercator'@'localhost';
+FLUSH PRIVILEGES ;
+ALTER USER 'mercator'@'localhost' IDENTIFIED BY 'zoHPsketXi#003255';
+CREATE DATABASE IF NOT EXISTS mercator__flyway;
+CREATE DATABASE IF NOT EXISTS mercator_autenticacao;
+CREATE DATABASE IF NOT EXISTS mercator_representacao;
+CREATE DATABASE IF NOT EXISTS mercator_financeiro;

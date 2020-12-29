@@ -1,0 +1,17 @@
+#iniciar e parar o banco de dados da aplicação docker
+docker container start mysql
+docker container stop mysql
+
+#listar os containers ativos no docker
+docker container ls
+
+#listar os containers ativos e inativos no docker
+docker container ls -la
+docker (nome_do_container) ls
+
+#apresentar o ip de um container docker
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' [CONTAINER ID]
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' 866452fc612b
+
+
+
